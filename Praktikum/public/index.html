@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus Commerce — Modern Product Catalog (Fetch API)</title>
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+  <!-- Navigasi Modern -->
+  <nav aria-label="Navigasi Utama">
+    <div class="nav-container">
+      <div class="brand-badge">
+        <div class="brand-icon">N</div>
+        <span>Nexus Commerce</span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html" aria-current="page">1. Fetch API (Katalog)</a>
+        <a href="form.html">2. Form DOM &amp; Event</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <header>
+    <div class="header-content">
+      <div class="tag-badge">
+        <span></span>
+        <span>Praktikum PAW | Pertemuan 6</span>
+      </div>
+      <h1>Katalog Produk Digital Interaktif</h1>
+      <p>Integrasi asynchronous data menggunakan JavaScript Fetch API langsung dari DummyJSON</p>
+    </div>
+  </header>
+
+  <!-- Konten Utama -->
+  <main>
+    <!-- Panel Monitoring & Input di Bagian Atas (Ketentuan: Semua input disimpan di atas) -->
+    <section class="monitor-panel" aria-labelledby="monitorTitle">
+      <div class="panel-header">
+        <div class="panel-title" id="monitorTitle">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" y1="21" x2="4" y2="14"></line>
+            <line x1="4" y1="10" x2="4" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12" y2="3"></line>
+            <line x1="20" y1="21" x2="20" y2="16"></line>
+            <line x1="20" y1="12" x2="20" y2="3"></line>
+            <line x1="1" y1="14" x2="7" y2="14"></line>
+            <line x1="9" y1="8" x2="15" y2="8"></line>
+            <line x1="17" y1="16" x2="23" y2="16"></line>
+          </svg>
+          <span>Panel Monitoring &amp; Kontrol Filter</span>
+        </div>
+
+        <div class="kpi-group">
+          <div class="kpi-chip live" id="kpiTotal">Memuat data...</div>
+          <div class="kpi-chip" id="kpiCategory">Kategori: Semua</div>
+          <div class="kpi-chip alert" id="kpiLowStock">Stok Kritis: 0</div>
+        </div>
+      </div>
+
+      <div class="controls-grid">
+        <div class="control-field">
+          <label for="searchInput">Pencarian Produk</label>
+          <div class="input-wrapper">
+            <span class="input-icon">🔍</span>
+            <input type="text" id="searchInput" placeholder="Cari berdasarkan nama produk atau merek..." autocomplete="off">
+          </div>
+        </div>
+
+        <div class="control-field">
+          <label for="categorySelect">Kategori</label>
+          <select id="categorySelect">
+            <option value="">Semua Kategori</option>
+          </select>
+        </div>
+
+        <div class="control-field">
+          <label for="sortSelect">Urutkan</label>
+          <select id="sortSelect">
+            <option value="default">Default API</option>
+            <option value="price-asc">Harga Terendah</option>
+            <option value="price-desc">Harga Tertinggi</option>
+            <option value="rating-desc">Rating Tertinggi</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Status Loading / Error -->
+    <div id="status" role="status" aria-live="polite">
+      <div class="spinner"></div>
+      <div>Sedang mengambil data produk dari server...</div>
+    </div>
+
+    <!-- Grid Kartu Produk -->
+    <section class="product-grid" id="productGrid" aria-label="Daftar Produk"></section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    Nexus Commerce Studio &middot; Pengembangan Aplikasi Web 2026 &middot; Fetch API &amp; DOM Native
+  </footer>
+
+  <script src="js/index.js"></script>
+</body>
+</html>

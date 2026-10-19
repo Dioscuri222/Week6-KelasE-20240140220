@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus Studio — Form DOM &amp; Caption Generator</title>
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/form.css">
+</head>
+<body>
+
+  <!-- Navigasi Modern -->
+  <nav aria-label="Navigasi Utama">
+    <div class="nav-container">
+      <div class="brand-badge">
+        <div class="brand-icon">N</div>
+        <span>Nexus Commerce</span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">1. Fetch API (Katalog)</a>
+        <a href="form.html" aria-current="page">2. Form DOM &amp; Event</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <header>
+    <div class="header-content">
+      <div class="tag-badge">
+        <span></span>
+        <span>Studio Pemrosesan DOM &amp; Event</span>
+      </div>
+      <h1>Generator Caption Produk Otomatis</h1>
+      <p>Validasi input pengguna secara real-time dan konversi data menjadi caption promosi dinamis</p>
+    </div>
+  </header>
+
+  <!-- Konten Utama (Workbench Studio) -->
+  <main>
+    <div class="workbench-layout">
+      <!-- Kolom Kiri: Form Input & Monitoring -->
+      <section class="studio-card" aria-labelledby="formTitle">
+        <div class="studio-card-header">
+          <div class="studio-title" id="formTitle">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+            </svg>
+            <span>Parameter Produk</span>
+          </div>
+          <span class="status-pill">Live Input Monitoring</span>
+        </div>
+
+        <form id="productForm" novalidate>
+          <!-- Input Nama Produk -->
+          <div class="form-group">
+            <div class="label-row">
+              <label for="nama">Nama Produk</label>
+              <span class="counter-badge" id="charCounter">0/60</span>
+            </div>
+            <input 
+              type="text" 
+              id="nama" 
+              placeholder="Contoh: Wireless Noise-Cancelling Headphones" 
+              autocomplete="off"
+              aria-describedby="nama-error"
+            >
+            <div class="field-error" id="nama-error" aria-live="polite"></div>
+          </div>
+
+          <!-- Input Harga Produk -->
+          <div class="form-group">
+            <div class="label-row">
+              <label for="harga">Harga Produk (IDR)</label>
+            </div>
+            <input 
+              type="number" 
+              id="harga" 
+              placeholder="Contoh: 750000" 
+              aria-describedby="harga-error"
+            >
+            <div class="field-error" id="harga-error" aria-live="polite"></div>
+          </div>
+
+          <!-- Pilihan Template Caption -->
+          <div class="form-group">
+            <div class="label-row">
+              <label for="template">Pilihan Tone &amp; Template</label>
+            </div>
+            <select id="template">
+              <option value="promo">⚡ Gaya Promo Kilat (Diskon &amp; Urgensi)</option>
+              <option value="santai">☕ Gaya Kasual &amp; Komunitas (Social Media)</option>
+              <option value="formal">👔 Gaya Profesional &amp; Spesifikasi (B2B)</option>
+            </select>
+          </div>
+
+          <!-- Tombol Aksi -->
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="submitBtn">
+              <span>✨</span>
+              <span>Generate Caption</span>
+            </button>
+            <button type="button" class="btn btn-secondary" id="resetBtn">Reset</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Kolom Kanan: Preview Hasil Pemrosesan DOM -->
+      <section class="studio-card" aria-labelledby="previewTitle">
+        <div class="studio-card-header">
+          <div class="studio-title" id="previewTitle">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            <span>Live Social Card Output</span>
+          </div>
+          <span class="status-pill" style="background: var(--emerald-light); color: var(--emerald);">Output DOM</span>
+        </div>
+
+        <!-- Banner Umpan Balik / Toast -->
+        <div class="toast-feedback" id="feedbackBanner" role="status" aria-live="polite"></div>
+
+        <div class="social-preview">
+          <div class="social-preview-header">
+            <div class="avatar-circle">N</div>
+            <div class="avatar-info">
+              <span class="avatar-name">Nexus Official Store</span>
+              <span class="avatar-time">Baru saja &middot; Publik</span>
+            </div>
+          </div>
+
+          <textarea 
+            id="caption" 
+            placeholder="Ketik nama dan harga produk di sebelah kiri, lalu tekan 'Generate Caption' untuk melihat teks yang diformat otomatis di sini..." 
+            readonly
+          ></textarea>
+        </div>
+
+        <button type="button" class="btn btn-copy" id="copyBtn" disabled>
+          <span>📋</span>
+          <span>Salin Teks Caption</span>
+        </button>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    Nexus Commerce Studio &middot; Form DOM &amp; Event Handling &middot; Validasi Native Real-time
+  </footer>
+
+  <script src="js/form.js"></script>
+</body>
+</html>
